@@ -34,3 +34,290 @@ Request URL: /users/add
 Stack Trace:
 #0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2016-08-07 13:25:30 Error: [MissingControllerException] Controller class IndexController could not be found.
+Exception Attributes: array (
+  'class' => 'IndexController',
+  'plugin' => NULL,
+)
+Request URL: /index
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 13:26:40 Error: [MissingControllerException] Controller class IndexController could not be found.
+Exception Attributes: array (
+  'class' => 'IndexController',
+  'plugin' => NULL,
+)
+Request URL: /index
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:28:32 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:33:55 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:34:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:35:36 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:37:43 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:37:45 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:37:47 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:37:50 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:40:38 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:41:04 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:41:21 Error: [NotFoundException] Invalid user
+Request URL: /users/edit
+Stack Trace:
+#0 [internal function]: UsersController->edit()
+#1 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Controller/Controller.php(491): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-08-07 14:42:14 Error: [NotFoundException] Invalid user
+Request URL: /users/edit
+Stack Trace:
+#0 [internal function]: UsersController->edit()
+#1 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Controller/Controller.php(491): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-08-07 14:43:11 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:43:17 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:43:19 Error: [NotFoundException] Invalid user
+Request URL: /users/edit
+Stack Trace:
+#0 [internal function]: UsersController->edit()
+#1 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Controller/Controller.php(491): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#2 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#3 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2016-08-07 14:45:10 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:45:45 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 14:47:33 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 15:20:28 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 15:27:44 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 15:28:08 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 15:30:03 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 15:30:05 Error: Fatal Error (4): syntax error, unexpected ')', expecting ',' or ';' in [/Users/sugiyamayuriko/code/loginbase/View/Users/add.ctp, line 16]
+2016-08-07 15:30:05 Error: [FatalErrorException] syntax error, unexpected ')', expecting ',' or ';'
+Request URL: /users/add
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Users/sugiyama...', 16)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Users/sugiyama...', 16, Array)
+#2 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Core/App.php(970): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Users/sugiyama...', 16, Array)
+#3 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-08-07 15:30:46 Error: Fatal Error (4): syntax error, unexpected ')', expecting ',' or ';' in [/Users/sugiyamayuriko/code/loginbase/View/Users/add.ctp, line 15]
+2016-08-07 15:30:46 Error: [FatalErrorException] syntax error, unexpected ')', expecting ',' or ';'
+Request URL: /users/add
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Users/sugiyama...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Users/sugiyama...', 15, Array)
+#2 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Core/App.php(970): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Users/sugiyama...', 15, Array)
+#3 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Core/App.php(943): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2016-08-07 15:33:37 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 15:59:53 Error: [MissingActionException] Action UsersController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'index',
+)
+Request URL: /users
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-08-07 16:00:12 Error: [PrivateActionException] Private Action UsersController::admin_index() is not directly accessible.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_index',
+)
+Request URL: /users/admin_index
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2016-08-07 16:01:01 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /css/admin.css
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2016-08-07 16:01:20 Error: [MissingActionException] Action UsersController::add() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'add',
+)
+Request URL: /users/add
+Stack Trace:
+#0 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Users/sugiyamayuriko/code/loginbase/Vendor/cakephp/cakephp/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 /Users/sugiyamayuriko/code/loginbase/webroot/index.php(111): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

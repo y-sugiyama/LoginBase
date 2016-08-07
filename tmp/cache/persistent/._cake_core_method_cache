@@ -1,2 +1,2 @@
-1470479744
+1470553271
 a:3:{i:0;b:0;s:4:"name";a:6:{s:32:"60297a7a05ddbe0efa64fa274da36b6d";s:11:"`loginbase`";s:32:"f94a437fb7858e092079378f93ef2c71";s:7:"`users`";s:32:"84aed5ca7734df237971a8964bd0217a";s:11:"`User`.`id`";s:32:"441e6eaad1b5f34da125c63e3ecd7702";s:17:"`User`.`username`";s:32:"46bea0d8cb0ffa1c5c7f63ad1e39035b";s:17:"`User`.`password`";s:32:"eb9b37fa6fe3e5c49f921ddcd721b306";s:6:"`User`";}s:6:"fields";a:1:{s:32:"963008b30a32cd62fac0c24119a6c3e3";a:3:{i:0;s:11:"`User`.`id`";i:1;s:17:"`User`.`username`";i:2;s:17:"`User`.`password`";}}}

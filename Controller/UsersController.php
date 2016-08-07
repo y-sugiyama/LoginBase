@@ -13,16 +13,26 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Session',
+            'Auth' => Array(
+                'loginRedirect' => Array('controller'  => 'users', 'action' => 'index'),
+                'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
+                'loginAction' => Array('controller' => 'users', 'action' => 'login'),
+//                'authenticate' => Array('Form' => Array('fields' => Array('username' => 'email')))
+            )
+        );
+ 
 
 /**
  * index method
  *
  * @return void
  */
-	public function index() {
+	public function admin_index() {
+                $this->layout = 'admin';
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
+                
 	}
 
 /**
@@ -32,7 +42,7 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -45,14 +55,17 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function admin_add() {
+            //フォームが送信されたら
 		if ($this->request->is('post')) {
+                    //空にして
 			$this->User->create();
+                        //正しくデータが保存されたら
 			if ($this->User->save($this->request->data)) {
-				$this->Flash->success(__('The user has been saved.'));
+				$this->Flash->success('ユーザが新規追加されました.');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Flash->error(__('The user could not be saved. Please, try again.'));
+				$this->Flash->error(__('ユーザが正常に保存されませんでした､再度登録をしてください.'));
 			}
 		}
 	}
@@ -64,7 +77,7 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -88,7 +101,7 @@ class UsersController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
