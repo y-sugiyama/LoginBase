@@ -1,18 +1,20 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<div class="admin form">
+    <?php
+        echo $this->Form->create('User');
+        echo $this->Form->input('username');
+        echo $this->Form->input('password');
+        echo $this->Form->input('role', array(
+            'options' => array('admin' => '管理者',  'auther' => 'ユーザ')
+        ));
+        echo $this->Form->end('アカウントを作成する');
+    ?>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-	</ul>
+<!--</div>
+<div class="actions">
+<br>
+	<h3><?php echo __('Actions'); ?></h3>-->
+	
+<?php echo $this->Html->link('ユーザ一覧へ戻る', array('action' => 'index')); ?>
+	
 </div>

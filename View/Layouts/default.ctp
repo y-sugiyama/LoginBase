@@ -5,7 +5,7 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', '');
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,6 +45,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	//<?php // echo $this->element('sql_dump'); ?>
 </body>
 </html>
