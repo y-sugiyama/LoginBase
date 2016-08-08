@@ -1,1 +1,7 @@
 /nbproject
+<<<<<<< Updated upstream
+=======
+/tmp
+/Config/database.php
+/Vendor
+>>>>>>> Stashed changes
