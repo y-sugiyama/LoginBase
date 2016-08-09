@@ -42,15 +42,5 @@ class User extends AppModel {
                     )
                 )
 	);
-        
-        public function beforeSave($options = array()) {
-            //入力されたパスワードを CakePHP の AuthComponent::password() を使ってハッシュ化して、データベースに直接平文のパスワードが入らないようになっています。
-                    if (isset($this->data[$this->alias]['password'])) {
-                        $passwordHasher = new BlowfishPasswordHasher();
-                        $this->data[$this->alias]['password'] = $passwordHasher->hash($this->data[$this->alias]['password']
-                        );
-                    }
-                return true;
-        }
 }
 

@@ -1,3 +1,3 @@
 <?php
-echo $this->element('form', ['text' => '新規登録']);
+echo $this->element('Users/form', ['text' => '新規登録']);
 ?>

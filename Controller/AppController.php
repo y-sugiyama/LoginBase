@@ -23,8 +23,8 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     public $components = array(
-    'Flash',
-    'Auth' => Array(
+        'Flash',
+        'Auth' => Array(
                 //ログイン後のリダイレクト先は/users/indexです
                 'loginRedirect' => Array('controller'  => 'users', 'action' => 'index'),
                 //ログアウト後のリダイレクト先は/users/loginです
@@ -32,22 +32,11 @@ class AppController extends Controller {
                 //ログインページのパスは/users/loginです
                 'loginAction' => Array('controller' => 'users', 'action' => 'login'),
         
-        'authenticate' => array(
-            'Form' => array(
-                'passwordHasher' => 'Blowfish'
+            'authenticate' => array(
+                'Form' => array(
+                    'passwordHasher' => 'Blowfish'
+                )
             )
-        ),
-//        'authorize' => array('Controller') 
-    )
-);
-
-public function isAuthorized($user) {
-    // Adminは全てのアクションにアクセスできる
-    if (isset($user['role']) && $user['role'] === 'admin') {
-        return true;
-    }
-
-    // デフォルトは拒否(auther)
-    return false;
-}
+        )
+    );
 }

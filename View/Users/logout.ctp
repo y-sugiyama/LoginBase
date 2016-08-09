@@ -1,3 +1,3 @@
 <?php
-echo $this->element('form', ['text' => 'ログアウト']);
+echo $this->element('Users/form', ['text' => 'ログアウト']);
 ?>

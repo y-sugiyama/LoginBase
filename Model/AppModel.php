@@ -21,4 +21,12 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+    public function beforeSave($options = array()) {
+    if (isset($this->data['User']['password'])) {
+        $passwordHasher = new BlowfishPasswordHasher();
+        $this->data['User']['password'] = $passwordHasher->hash(
+            $this->data['User']['password']
+        );
+    }
+    return true;
 }

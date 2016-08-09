@@ -14,23 +14,14 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator','Session',
-//            'Auth' => Array(
-//                //ログイン後のリダイレクト先は/users/indexです
-//                'loginRedirect' => Array('controller'  => 'users', 'action' => 'index'),
-//                //ログアウト後のリダイレクト先は/users/loginです
-//                'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
-//                //ログインしていない場合のリダイレクト先は/users/addです
-//                'loginAction' => Array('controller' => 'users', 'action' => 'add'),
-////authenticateはカスタマイズなので今回はなし
-////                'authenticate' => Array('Form' => Array('fields' => Array('username' => 'email')))
-//            )
+                    
         );
  
         public function beforeFilter() {
             parent::beforeFilter();
             //コントローラのアクション処理の最初に以下の処理を行う
-            //ユーザ自身によるaddアクションを許可
-            //$this->Auth->allow('add');
+            $this->Auth->authorize = array('UsersController');
+
             
         }
 
@@ -115,10 +106,11 @@ class UsersController extends AppController {
         public function login() {
             //postでフォームが送信されたら
             if($this->request->is('post')) {
+                                    echo 'incoming';
+                    exit;
                 //送信されたデータからログイン情報を探して会員情報が存在するか調べる
                 if($this->Auth->login()) {
-//                    echo 'incoming';
-//                    exit;
+
                     //存在したら､Sessionに会員情報を記録し､ログイン後のリダイレクト先として設定したページヘリダイレクトする
                     return $this->redirect($this->Auth->redirect());
                 } else {
@@ -136,6 +128,7 @@ class UsersController extends AppController {
                 {
                    $this->redirect($this->Auth->logout());
                 }
+                
  
 
 /**
@@ -158,4 +151,19 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+        public function isAuthorized($user) {
+             // Adminは全てのアクションにアクセスできる
+//                if (isset($user['role']) && $user['role'] === 'admin') {
+//                    return true;
+//                }
+                // adminユーザだけが管理 functions にアクセス可能です。
+                if (isset($this->request->params['admin'])) {
+                    return (bool)($user['role'] === 'admin');
+                }
+                
+                
+             // デフォルトは拒否(auther)
+                return false;
+        }
 }
