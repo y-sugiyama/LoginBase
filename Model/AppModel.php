@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application model for Cake.
  *
@@ -9,7 +10,6 @@
  * @package       app.Model
  * @since         CakePHP(tm) v 0.2.9
  */
-
 App::uses('Model', 'Model');
 
 /**
@@ -21,12 +21,15 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
     public function beforeSave($options = array()) {
-    if (isset($this->data['User']['password'])) {
-        $passwordHasher = new BlowfishPasswordHasher();
-        $this->data['User']['password'] = $passwordHasher->hash(
-            $this->data['User']['password']
-        );
+        if (isset($this->data['User']['password'])) {
+            $passwordHasher = new BlowfishPasswordHasher();
+            $this->data['User']['password'] = $passwordHasher->hash(
+                    $this->data['User']['password']
+            );
+        }
+        return true;
     }
-    return true;
+
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Static content controller.
  *
@@ -8,10 +9,8 @@
  * @package       app.Controller
  * @since         CakePHP(tm) v 0.2.9
  */
-
 App::uses('AppController', 'Controller');
 App::uses('BaseAuthorize', 'Controller/Component/Auth');
-
 
 /**
  * Static content controller
@@ -23,67 +22,71 @@ App::uses('BaseAuthorize', 'Controller/Component/Auth');
  */
 class PagesController extends AppController {
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
-	public $uses = array();
+    /**
+     * This controller does not use a model
+     *
+     * @var array
+     */
+    public $uses = array();
 
-/**
- * Displays a view
- *
- * @return void
- * @throws NotFoundException When the view file could not be found
- *   or MissingViewException in debug mode.
- */
-        public function beforeFilter() {
-            parent::beforeFilter();
-            $this->Auth->allow();
+    /**
+     * Displays a view
+     *
+     * @return void
+     * @throws NotFoundException When the view file could not be found
+     *   or MissingViewException in debug mode.
+     */
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow();
+    }
+
+    public function beforeRender() {
+        parent::beforeRender();
+        //このアクションではfront.ctpのレイアウトを使います
+        $this->layout = 'front';
+    }
+
+    public function display() {
+        $path = func_get_args();
+
+
+        //パスの数を数える (スラッシュで区切られた)
+        $count = count($path);
+        if (!$count) {
+            //何も書かれてなければrootに飛ぶ
+            return $this->redirect('/');
         }
+        //変数の初期化
+        $page = $subpage = $title_for_layout = null;
 
+        //pathの1個めに文字列が入っていたら
+        if (!empty($path[0])) {
+            //その文字列を代入する  aaa
+            $page = $path[0];
+        }
+        // bbb
+        if (!empty($path[1])) {
+            $subpage = $path[1];
+        }
+        if (!empty($path[$count - 1])) {
+            // bbb
+            $title_for_layout = Inflector::humanize($path[$count - 1]);
+        }
+        $this->set(compact('page', 'subpage', 'title_for_layout'));
 
+        try {
+            $this->render(implode('/', $path));
+        } catch (MissingViewException $e) {
+            if (Configure::read('debug')) {
+                throw $e;
+            }
+            throw new NotFoundException();
+        }
+    }
 
-
-        public function display() {
-		$path = func_get_args();
-                
-                
-                //パスの数を数える (スラッシュで区切られた)
-		$count = count($path);
-		if (!$count) {
-                    //何も書かれてなければrootに飛ぶ
-			return $this->redirect('/');
-		}
-                //変数の初期化
-		$page = $subpage = $title_for_layout = null;
-                
-                //pathの1個めに文字列が入っていたら
-		if (!empty($path[0])) {
-                    //その文字列を代入する  aaa
-			$page = $path[0];
-		}
-                // bbb
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-		if (!empty($path[$count - 1])) {
-                    // bbb
-			$title_for_layout = Inflector::humanize($path[$count - 1]);
-		}
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-
-		try {
-			$this->render(implode('/', $path));
-		} catch (MissingViewException $e) {
-			if (Configure::read('debug')) {
-				throw $e;
-			}
-			throw new NotFoundException();
-		}
-	}
+    public function top() {
         
-        public function top(){
-            $this->layout = 'admin';
-        }
+    }
+
 }

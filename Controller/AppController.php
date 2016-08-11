@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -9,7 +10,6 @@
  * @package       app.Controller
  * @since         CakePHP(tm) v 0.2.9
  */
-
 App::uses('Controller', 'Controller');
 
 /**
@@ -22,21 +22,33 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
     public $components = array(
         'Flash',
         'Auth' => Array(
-                //ログイン後のリダイレクト先は/users/indexです
-                'loginRedirect' => Array('controller'  => 'users', 'action' => 'index'),
-                //ログアウト後のリダイレクト先は/users/loginです
-                'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
-                //ログインページのパスは/users/loginです
-                'loginAction' => Array('controller' => 'users', 'action' => 'login'),
-        
+            //ログイン後のリダイレクト先は/users/indexです
+            'loginRedirect' => Array('controller' => 'users', 'action' => 'index'),
+            //ログアウト後のリダイレクト先は/users/loginです
+            'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
+            //ログインページのパスは/users/loginです
+            'loginAction' => Array('controller' => 'users', 'action' => 'login'),
             'authenticate' => array(
                 'Form' => array(
+                    
+                    'fields' => [
+                        'username' => 'username',
+                        'password' => 'password'
+                    ],
                     'passwordHasher' => 'Blowfish'
                 )
             )
         )
     );
+
+    public function beforeRender() {
+        parent::beforeRender();
+        //このアクションではadmin.ctpのレイアウトを使います
+        $this->layout = 'admin';
+    }
+
 }

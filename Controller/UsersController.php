@@ -20,10 +20,14 @@ class UsersController extends AppController {
         public function beforeFilter() {
             parent::beforeFilter();
             //コントローラのアクション処理の最初に以下の処理を行う
-            $this->Auth->authorize = array('UsersController');
+            //$this->Auth->authorize = array('UsersController');
 
             
         }
+        
+
+        
+        
 
 /**
  * index method
@@ -31,8 +35,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function index() {
-            //このアクションではadmin.ctpのレイアウトを使います
-                $this->layout = 'admin';
+
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
                 
@@ -64,10 +67,9 @@ class UsersController extends AppController {
             //フォームが送信されたら
 		if ($this->request->is('post')) {
                     //空にして
+                    
 			$this->User->create();
-                        //Authで認証されたユーザのidをリクエストデータuser_idに代入する
-                        // user() 関数は現在ログインしているユーザーから全てのカラムを返す
-                        $this->request->data['Post']['user_id'] = $this->Auth->user('id');
+                    
                         //正しくデータが保存されたら
 			if ($this->User->save($this->request->data)) {
 				$this->Flash->success('ユーザが新規追加されました.');
@@ -104,10 +106,14 @@ class UsersController extends AppController {
 	}
         
         public function login() {
+            
+            //
+            $this->layout='front';
+            
             //postでフォームが送信されたら
             if($this->request->is('post')) {
-                                    echo 'incoming';
-                    exit;
+                
+                
                 //送信されたデータからログイン情報を探して会員情報が存在するか調べる
                 if($this->Auth->login()) {
 
@@ -115,7 +121,9 @@ class UsersController extends AppController {
                     return $this->redirect($this->Auth->redirect());
                 } else {
                     //存在しなかったら以下のメッセージを返す
-                    $this->Session->setFlash('ユーザネームかパスワードが間違っています');
+                    $this->Flash->set('ユーザネームかパスワードが間違っています');
+         
+                    
                 }
             }
         }

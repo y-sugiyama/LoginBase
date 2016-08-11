@@ -41,11 +41,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		?>
 </head>
 <body>
-<?php echo $this->element(navbar); ?>
+<?php echo $this->element('navbar_admin'); ?>
 
 	<div id="container" class="container">
 		<div id="content">
-			<?php echo $this->Session->flash(); ?>
+                    <!-- viewにflashを呼び出す -->
+			<?php echo $this->Flash->render(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
