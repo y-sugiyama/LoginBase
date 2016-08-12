@@ -17,7 +17,7 @@ class User extends AppModel {
 		'username' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
+				'message' => 'ユーザ名が入力されていません',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -27,7 +27,7 @@ class User extends AppModel {
 		'password' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
+				'message' => 'パスワードが入力されていません',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -36,7 +36,7 @@ class User extends AppModel {
 		),
                 'role' => array(
                     'valid' => array(
-                        'rule' => array('inList', array('admin', 'author')),
+                        'rule' => array('inList', array('admin', 'user')),
                         'message' => '権限を選択してください',
                         'allowEmpty' => false
                     )
