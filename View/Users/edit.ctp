@@ -1,27 +1,44 @@
 
+<div class="users index">
 
-<form class="form-edit has-error " novalidate="" method="post">
+    <div class="container">
 
-    <h2 class="form-edit-heading"><?php echo '編集画面'; ?></h2>
+        <!-- content -->
+        <div class="row" style="padding:5px 0 0 0">
+            <!-- left -->
+            <div class="col-md-3">   
 
-    <div class="form-group">
-        <label for="inputUsername" >ユーザ名</label>
-        <input type="text" name="data[User][username]" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-         <?php if(isset($this->validationErrors['User']['username'])) :?>
-        <p class="help-block"><?php echo $this->validationErrors['User']['username'][0]; ?></p>
-        <?php endif;?>
+            <?php echo $this->element('menu_admin'); ?>
+
+            </div>
+
+            <!-- center -->
+            <div class="col-md-9" style="background-color:white">
+
+
+
+                <h2 class="form-signin-heading"><?php echo '編集画面'; ?></h2>
+
+<?php echo $this->Form->create('User', ['novalidate' => 'novalidate']) ?>
+
+                <div class="form-group <?php if($this->Form->isFieldError('username')) { echo 'has-error'; } ?>">
+    <?php echo $this->Form->input('username', [
+        'class'=>'form-control',
+        'placeholder' => 'Username'
+    ]); ?>
+                </div>
+
+                <div class="form-group <?php if($this->Form->isFieldError('password')) { echo 'has-error';}?>">
+    <?php echo $this->Form->input('password', [  
+        'class'=>'form-control',
+        'placeholder' => 'Password'
+    ]); ?>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit"><?php echo '更新'; ?></button>
+<?php echo $this->Form->end(); ?> 
+                
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="inputPassword" >パスワード</label>
-        <input type="password"  name="data[User][password]" id="inputPassword" class="form-control" placeholder="Password" required>
-         <?php if(isset($this->validationErrors['User']['password'])) :?>
-        <p class="help-block"><?php echo $this->validationErrors['User']['password'][0]; ?></p>
-        <?php endif;?>
-    </div>
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit"><?php echo '編集を完了'; ?></button>
-</form>
-
-<br >
-<a class="btn btn-default" href="/users/index" role="button">ユーザ一覧に戻る</a>
+</div>

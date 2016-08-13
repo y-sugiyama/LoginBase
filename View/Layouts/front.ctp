@@ -8,7 +8,7 @@
 
 
         <title>
-            //タイトルが設定されていたらそれを表示する
+<!--            タイトルが設定されていたらそれを表示する-->
 		<?php echo $this->fetch('title'); ?>
         </title>
 
@@ -28,7 +28,7 @@
 
 		<?php
     
-              //view側のctpファイルにmeta css scriptが書かれていれば適用します
+//              view側のctpファイルにmeta css scriptが書かれていれば適用します
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -37,7 +37,7 @@
     <body>
         <?php echo $this->element('navbar_front'); ?>
 
-        表示領域の幅全体に表示する
+<!--        表示領域の幅全体に表示する-->
         <div class = "container-fluid">
         <?php echo $this->fetch('topheader') ; ?>
         </div>
@@ -46,7 +46,7 @@
             <div id="content">
 		<?php echo $this->Session->flash(); ?>
                 
-                //ctpファイルで個別の設定を読み込む
+<!--                ctpファイルで個別の設定を読み込む-->
 		<?php echo $this->fetch('content'); ?>
             </div>
         </div>

@@ -71,8 +71,9 @@ class UsersController extends AppController {
             } else {
                 //正しくデータが保存されなかったら
             }
-            $this->Flash->error('ユーザが正常に保存されませんでした､再度登録をしてください.');
+            $this->Flash->danger('ユーザが正常に保存されませんでした､再度登録をしてください.');
         }
+
     }
 
     /**
@@ -107,7 +108,7 @@ class UsersController extends AppController {
                 $this->Flash->success(__('投稿は保存されました'));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->error(__('投稿を更新できませんでした'));
+            $this->Flash->danger(__('投稿を更新できませんでした'));
         }
         //$this->request->data が空っぽだったら、取得していたポストレコードを そのままセットしておきます
         if (!$this->request->data) {
@@ -116,22 +117,25 @@ class UsersController extends AppController {
     }
 
     public function login() {
-
+        
         //
         $this->layout = 'front';
 
+
         //postでフォームが送信されたら
         if ($this->request->is('post')) {
-
-
+           
             //送信されたデータからログイン情報を探して会員情報が存在するか調べる
             if ($this->Auth->login()) {
 
                 //存在したら､Sessionに会員情報を記録し､ログイン後のリダイレクト先として設定したページヘリダイレクトする
+                $this->Flash->success('ログインしました');
                 return $this->redirect($this->Auth->redirect());
+                
             } else {
                 //存在しなかったら以下のメッセージを返す
-                $this->Flash->set('ユーザネームかパスワードが間違っています');
+                
+                $this->Flash->danger('ユーザネームかパスワードが間違っています');
             }
         }
     }
@@ -141,7 +145,7 @@ class UsersController extends AppController {
 
     public function logout($id = null) {
     //通常ログアウト処理は POST 送信でワンタイムトークンと共に実装すると、予期せぬログアウトなどが起こらなくてすむ
-    //今回は管理画面である点とサンプルコードであるという点から、マニュアル通りの GET で実装
+    
         $this->redirect($this->Auth->logout());
     }
 
@@ -159,9 +163,9 @@ class UsersController extends AppController {
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->User->delete()) {
-            $this->Flash->success('The user has been deleted.');
+            $this->Flash->success('このユーザは削除されました.');
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->danger('ユーザは削除されませんでした｡再度削除してください');
         }
         return $this->redirect(array('action' => 'index'));
     }
@@ -180,5 +184,60 @@ class UsersController extends AppController {
         // デフォルトは拒否(auther)
         return false;
     }
+    
+    public function change_password() {
+        
+          
+        //フォームがpostかputで送信されたら
+        if ($this->request->is(['post', 'put'])) {
+                
+            //リクエストデータが保存されたら
+            if ($this->User->save($this->request->data)) {
+                //flashコンポーネントを使ってメッセージを表示する
+                $this->Flash->success('パスワードを更新しました');
+                   //Authコンポーネントで指定したredirectUrlにリダイレクトする
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+        } else {
+            //現在ログインしているユーザのidをとってきて$this->request->dataにいれる
+            $this->request->data = ['User' => ['id' => $this->Auth->user('id')]];
+            $this->Flash->danger('パスワードは変更されませんでした｡再度変更してください');
+        }
+        
+    }
+    
+//    public function edit_user($id = null) {
+//        var_dump($id);
+//        exit;
+//        //渡された$idが存在しなかったら
+//        if (!$id) {
+//            //'Invalid post'の例外処理を投げます
+//            throw new NotFoundException('Invalid post');
+//        }
+//          //渡された$idが存在したら$idからデータを見つけてさらってきます
+//        $post = $this->User->findById($id);
+//        
+//        //データがpostではなかったら
+//        if (!$post) {
+//            //'Invalid post'の例外処理を投げます
+//            throw new NotFoundException(__('Invalid post'));
+//        }
+//         //データがpostかputだったら
+//        if ($this->request->is(array('post', 'put'))) {
+//            //$idをidに代入します
+//            $this->User->id = $id;
+//            //呼びだされたデータが保存されたら
+//            if ($this->User->save($this->request->data)) {
+//                //Flashコンポーネントを使ってメッセージを表示します
+//                $this->Flash->success(__('投稿は保存されました'));
+//                return $this->redirect(array('action' => 'index'));
+//            }
+//            $this->Flash->error(__('投稿を更新できませんでした'));
+//        }
+//        //$this->request->data が空っぽだったら、取得していたポストレコードを そのままセットしておきます
+//        if (!$this->request->data) {
+//            $this->request->data = $post;
+//        }
+//    }
 
 }

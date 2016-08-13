@@ -25,6 +25,9 @@ class AppController extends Controller {
 
     public $components = array(
         'Flash',
+        'Security' => array(
+            'csrfExpires' => '+1 hour'
+        ),
         'Auth' => Array(
             //ログイン後のリダイレクト先は/users/indexです
             'loginRedirect' => Array('controller' => 'users', 'action' => 'index'),
@@ -34,7 +37,6 @@ class AppController extends Controller {
             'loginAction' => Array('controller' => 'users', 'action' => 'login'),
             'authenticate' => array(
                 'Form' => array(
-                    
                     'fields' => [
                         'username' => 'username',
                         'password' => 'password'
@@ -45,10 +47,11 @@ class AppController extends Controller {
         )
     );
 
-    public function beforeRender() {
+    public function beforeFilter() {
         parent::beforeRender();
         //このアクションではadmin.ctpのレイアウトを使います
         $this->layout = 'admin';
+        $this->set('login_user', $this->Auth->user('id'));
     }
 
 }

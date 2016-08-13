@@ -8,3 +8,9 @@ and open the template in the editor.
     Author     : sugiyamayuriko
 */
 
+.error-message
+{
+    color: #a94442;
+    margin-top: 5px; 
+}
+
