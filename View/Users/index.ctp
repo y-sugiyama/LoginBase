@@ -8,43 +8,43 @@
         <div class="row" style="padding:5px 0 0 0">
             <!-- left -->
             <div class="col-md-3">   
-                
-            <?php echo $this->element('menu_admin'); ?>
+
+                <?php echo $this->element('menu_admin'); ?>
 
             </div>
 
             <!-- center -->
             <div class="col-md-9" style="background-color:white">
-                    <h2><?php echo 'ユーザ一覧'; ?></h2>
-                    
-                   
-                    <p><?php echo $this->Html->link('ユーザ新規追加', array('controller'=>'users','action' => 'add')); ?></p>
-                       
+                <h2><?php echo 'ユーザ一覧'; ?></h2>
 
-            <?php echo $this->fetch('content'); ?>
-               <table class="table table-striped">
 
-	<?php foreach ($users as $user): ?>
-                   <tr>
-                       <th>ユーザ名</th>
-                       <th>権限</th>
-                       <th>アクション</th>
-                   </tr>
+                <p><button class="btn btn-default" role="button"><?php echo $this->Html->link('新規追加', array('controller' => 'users', 'action' => 'add')); ?></button></p>
+
+
+                <?php echo $this->fetch('content'); ?>
+                <table class="table table-striped">
+                    <tr>
+                        <th>ユーザ名</th>
+                        <th>権限</th>
+                        <th>アクション</th>
+                    </tr>
+                    <?php foreach ($users as $user): ?>
+
                         <tr>
-                           
-                            <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+
+                            <td><?php echo $this->Html->link(h($user['User']['username']), array('action' => 'view', $user['User']['id'])); ?></td>
                             <td><?php echo h($user['User']['role']); ?>&nbsp;</td>
                             <td class="actions">
-			<?php echo $this->Html->link('詳細', array('action' => 'view', $user['User']['id'])); ?>
-			<?php echo $this->Html->link('編集', array('action' => 'edit', $user['User']['id'])); ?>
-			<?php echo $this->Form->postLink(__('削除'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $user['User']['id']))); ?>
+
+                                <button type="button" class="btn btn-default"><?php echo $this->Html->link('編集', array('action' => 'edit', $user['User']['id'])); ?></button>
+                                <button type="button" class="btn btn-danger"><?php echo $this->Form->postLink(__('削除'), array('action' => 'delete', $user['User']['id']), array('confirm' => '本当に削除してよろしいですか?', $user['User']['id'])); ?></button>
                             </td>
                         </tr>
-<?php endforeach; ?>
-                    
+                    <?php endforeach; ?>
+
                 </table>
-                    
-                                          </div>
+
+            </div>
 
         </div>
 

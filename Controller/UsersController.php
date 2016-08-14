@@ -21,7 +21,21 @@ class UsersController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         //コントローラのアクション処理の最初に以下の処理を行う
-        //$this->Auth->authorize = array('UsersController');
+        
+    }
+
+    public function isAuthorized($user) {
+//         Adminは全てのアクションにアクセスできる
+        if (isset($user['role']) && $user['role'] === 'admin') {
+                    return true;
+                }
+        // adminユーザだけが管理 functions にアクセス可能です。
+        if (isset($this->request->params['admin'])) {
+            return (bool) ($user['role'] === 'admin');
+        }
+
+        // デフォルトは拒否(user)
+        return false;
     }
 
     /**
@@ -73,7 +87,6 @@ class UsersController extends AppController {
             }
             $this->Flash->danger('ユーザが正常に保存されませんでした､再度登録をしてください.');
         }
-
     }
 
     /**
@@ -90,15 +103,15 @@ class UsersController extends AppController {
             //'Invalid post'の例外処理を投げます
             throw new NotFoundException('Invalid post');
         }
-          //渡された$idが存在したら$idからデータを見つけてさらってきます
+        //渡された$idが存在したら$idからデータを見つけてさらってきます
         $post = $this->User->findById($id);
-        
+
         //データがpostではなかったら
         if (!$post) {
             //'Invalid post'の例外処理を投げます
             throw new NotFoundException(__('Invalid post'));
         }
-         //データがpostかputだったら
+        //データがpostかputだったら
         if ($this->request->is(array('post', 'put'))) {
             //$idをidに代入します
             $this->User->id = $id;
@@ -117,24 +130,23 @@ class UsersController extends AppController {
     }
 
     public function login() {
-        
+
         //
         $this->layout = 'front';
 
 
         //postでフォームが送信されたら
         if ($this->request->is('post')) {
-           
+
             //送信されたデータからログイン情報を探して会員情報が存在するか調べる
             if ($this->Auth->login()) {
 
                 //存在したら､Sessionに会員情報を記録し､ログイン後のリダイレクト先として設定したページヘリダイレクトする
                 $this->Flash->success('ログインしました');
                 return $this->redirect($this->Auth->redirect());
-                
             } else {
                 //存在しなかったら以下のメッセージを返す
-                
+
                 $this->Flash->danger('ユーザネームかパスワードが間違っています');
             }
         }
@@ -144,8 +156,8 @@ class UsersController extends AppController {
 
 
     public function logout($id = null) {
-    //通常ログアウト処理は POST 送信でワンタイムトークンと共に実装すると、予期せぬログアウトなどが起こらなくてすむ
-    
+        //通常ログアウト処理は POST 送信でワンタイムトークンと共に実装すると、予期せぬログアウトなどが起こらなくてすむ
+
         $this->redirect($this->Auth->logout());
     }
 
@@ -170,32 +182,17 @@ class UsersController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
-    public function isAuthorized($user) {
-        // Adminは全てのアクションにアクセスできる
-//                if (isset($user['role']) && $user['role'] === 'admin') {
-//                    return true;
-//                }
-        // adminユーザだけが管理 functions にアクセス可能です。
-        if (isset($this->request->params['admin'])) {
-            return (bool) ($user['role'] === 'admin');
-        }
-
-
-        // デフォルトは拒否(auther)
-        return false;
-    }
-    
     public function change_password() {
-        
-          
+
+
         //フォームがpostかputで送信されたら
         if ($this->request->is(['post', 'put'])) {
-                
+
             //リクエストデータが保存されたら
             if ($this->User->save($this->request->data)) {
                 //flashコンポーネントを使ってメッセージを表示する
                 $this->Flash->success('パスワードを更新しました');
-                   //Authコンポーネントで指定したredirectUrlにリダイレクトする
+                //Authコンポーネントで指定したredirectUrlにリダイレクトする
                 return $this->redirect($this->Auth->redirectUrl());
             }
         } else {
@@ -203,9 +200,8 @@ class UsersController extends AppController {
             $this->request->data = ['User' => ['id' => $this->Auth->user('id')]];
             $this->Flash->danger('パスワードは変更されませんでした｡再度変更してください');
         }
-        
     }
-    
+
 //    public function edit_user($id = null) {
 //        var_dump($id);
 //        exit;
@@ -239,5 +235,4 @@ class UsersController extends AppController {
 //            $this->request->data = $post;
 //        }
 //    }
-
 }

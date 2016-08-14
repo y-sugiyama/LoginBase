@@ -51,7 +51,10 @@ class AppController extends Controller {
         parent::beforeRender();
         //このアクションではadmin.ctpのレイアウトを使います
         $this->layout = 'admin';
+        //ログインしているユーザのIDを変数login_userに代入します
         $this->set('login_user', $this->Auth->user('id'));
+         //ログインしているユーザのユーザ名を変数login_usernameに代入します
+        $this->set('login_username', $this->Auth->user('username'));
     }
 
 }
