@@ -20,21 +20,20 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        //コントローラのアクション処理の最初に以下の処理を行う
-        
+      
     }
 
     public function isAuthorized($user) {
-//         Adminは全てのアクションにアクセスできる
-        if (isset($user['role']) && $user['role'] === 'admin') {
-                    return true;
-                }
-        // adminユーザだけが管理 functions にアクセス可能です。
-        if (isset($this->request->params['admin'])) {
-            return (bool) ($user['role'] === 'admin');
+        // action配列の中に['login', 'logout', 'index'が含まれていたら
+        if (in_array($this->action, ['login', 'logout', 'index'])) {
+//            trueを返す(roleがadminでもuserでもそのactionにアクセスできる)
+            return true;
+        }
+        //それ以外のactionの場合は､管理者adminだけがアクセスできる
+        if ($user['role'] === 'admin') {
+            return true;
         }
 
-        // デフォルトは拒否(user)
         return false;
     }
 
@@ -75,9 +74,8 @@ class UsersController extends AppController {
         //フォームが送信されたら
         if ($this->request->is('post')) {
             //空にして
-
             $this->User->create();
-
+           
             //正しくデータが保存されたら
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success('ユーザが新規追加されました.');
@@ -97,35 +95,49 @@ class UsersController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        $this->User->validator()->remove('password', 'notBlank');
 
-        //渡された$idが存在しなかったら
-        if (!$id) {
-            //'Invalid post'の例外処理を投げます
-            throw new NotFoundException('Invalid post');
-        }
         //渡された$idが存在したら$idからデータを見つけてさらってきます
-        $post = $this->User->findById($id);
+        $user = $this->User->findById($id);
 
-        //データがpostではなかったら
-        if (!$post) {
-            //'Invalid post'の例外処理を投げます
-            throw new NotFoundException(__('Invalid post'));
+        //データが$userではなかったら
+        if (!$user) {
+            //'Invalid user 'の例外を投げます
+            throw new NotFoundException(__('Invalid user'));
         }
         //データがpostかputだったら
         if ($this->request->is(array('post', 'put'))) {
             //$idをidに代入します
             $this->User->id = $id;
+            
+            //もしパスワードが殻だったら
+            if($this->request->data['User']['password'] == ''){
+               
+                    unset($this->request->data['User']['password']);
+                }
+             
+              
             //呼びだされたデータが保存されたら
             if ($this->User->save($this->request->data)) {
+                
+                
                 //Flashコンポーネントを使ってメッセージを表示します
                 $this->Flash->success(__('投稿は保存されました'));
+
+                //Authコンポーネントのログインセッション情報をリフレッシュ
+                $user = $this->User->find('first', [
+                    'fields' => ['id', 'username', 'role'],
+                    'conditions' => ['id' => $this->Auth->user('id')]
+                ]);
+                $this->Auth->login($user['User']);
+
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->danger(__('投稿を更新できませんでした'));
+            $this->Flash->danger('投稿を更新できませんでした');
         }
         //$this->request->data が空っぽだったら、取得していたポストレコードを そのままセットしておきます
         if (!$this->request->data) {
-            $this->request->data = $post;
+            $this->request->data = $user;
         }
     }
 
@@ -141,12 +153,16 @@ class UsersController extends AppController {
             //送信されたデータからログイン情報を探して会員情報が存在するか調べる
             if ($this->Auth->login()) {
 
+
+
                 //存在したら､Sessionに会員情報を記録し､ログイン後のリダイレクト先として設定したページヘリダイレクトする
                 $this->Flash->success('ログインしました');
+
                 return $this->redirect($this->Auth->redirect());
             } else {
                 //存在しなかったら以下のメッセージを返す
-
+                
+                
                 $this->Flash->danger('ユーザネームかパスワードが間違っています');
             }
         }

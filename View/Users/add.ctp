@@ -8,7 +8,7 @@
             <!-- left -->
             <div class="col-md-3">   
 
-            <?php echo $this->element('menu_admin'); ?>
+                <?php echo $this->element('menu_admin'); ?>
 
             </div>
 
@@ -18,36 +18,48 @@
                 <h2 class="form-signin-heading"><?php echo '新規登録画面'; ?></h2>
 
 
-<?php echo $this->Form->create('User', ['novalidate' => 'novalidate']) ?>
+                <?php echo $this->Form->create('User', ['novalidate' => 'novalidate']) ?>
 
-                <div class="form-group <?php if($this->Form->isFieldError('username')) { echo 'has-error'; } ?>">
-    <?php echo $this->Form->input('username', [
-        'class'=>'form-control',
-        'placeholder' => 'Username'
-    ]); ?>
+                <div class="form-group <?php
+                if ($this->Form->isFieldError('username')) {
+                    echo 'has-error';
+                }
+                ?>">
+                         <?php
+                         echo $this->Form->input('username', [
+                             'class' => 'form-control',
+                             'placeholder' => 'Username'
+                         ]);
+                         ?>
 
                 </div>
 
-                <div class="form-group <?php if($this->Form->isFieldError('password')) { echo 'has-error';}?>">
-    <?php echo $this->Form->input('password', [  
-        'class'=>'form-control',
-        'placeholder' => 'Password'
-  
-        ]); ?>
-                </div>
+                <div class="form-group <?php
+                         if ($this->Form->isFieldError('password')) {
+                             echo 'has-error';
+                         }
+                         ?>">
+                         <?php
+                    echo $this->Form->input('password', [
+                        'class' => 'form-control',
+                        'placeholder' => 'Password'
+                    ]);
+                    ?></div>
+
+
+
 
                 <div class="form-group">
-<?php
-echo $this->Form->input('role', array( 
-    'type' => 'select', 
-    'options' => [
-        'admin' =>'管理者',
-        'user' => 'ユーザ'
-    ],
-    'class'=>'form-control',
-    ));
-    
-?>
+                    <?php
+                    echo $this->Form->input('role', array(
+                        'type' => 'select',
+                        'options' => [
+                            'admin' => '管理者',
+                            'user' => 'ユーザ'
+                        ],
+                        'class' => 'form-control',
+                    ));
+                    ?>
                 </div>
 
 

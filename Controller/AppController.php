@@ -35,7 +35,9 @@ class AppController extends Controller {
             'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
             //ログインページのパスは/users/loginです
             'loginAction' => Array('controller' => 'users', 'action' => 'login'),
+            //認証判定ハンドラの設定
             'authenticate' => array(
+//                FormAuthenticate で、POST されたデータをもとに認証を行う
                 'Form' => array(
                     'fields' => [
                         'username' => 'username',
@@ -43,7 +45,9 @@ class AppController extends Controller {
                     ],
                     'passwordHasher' => 'Blowfish'
                 )
-            )
+            ),
+            //権限判定
+          'authorize' => array('Controller')
         )
     );
 
@@ -53,7 +57,7 @@ class AppController extends Controller {
         $this->layout = 'admin';
         //ログインしているユーザのIDを変数login_userに代入します
         $this->set('login_user', $this->Auth->user('id'));
-         //ログインしているユーザのユーザ名を変数login_usernameに代入します
+        //ログインしているユーザのユーザ名を変数login_usernameに代入します
         $this->set('login_username', $this->Auth->user('username'));
     }
 
