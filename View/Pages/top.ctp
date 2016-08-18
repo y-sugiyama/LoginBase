@@ -1,40 +1,59 @@
 
 
-        <!-- Jumbotron -->
-      <?php
-        $this->start('topheader');
-      ?>
-        <div class="jumbotron">
-      
-            <h1>Loginbase Top</h1>
-            <p class="lead">ELITES後半3ヶ月の課題としてログイン機能を実装したwebサイトのベースを作成します</p>
+<!-- Jumbotron -->
+<?php
+$this->start('topheader');
+?>
+<div class="jumbotron">
+ <div class="container">
+    <h1>Loginbase Top</h1>
+    <p class="lead">ログイン機能を実装したwebサイトの基盤となるものです</p>
 
  <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p> -->
-        </div>
-         <?php
-        $this->end();
-?>
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Safari bug warning!</h2>
-                <p class="text-danger">As of v9.1.2, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-                <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-            </div>
-        </div>
+</div>
+</div>
 
-        <!-- Site footer -->
-        <footer class="footer">
-            <p>&copy; 2016 Company, Inc.</p>
-        </footer>
+<?php
+$this->end();
+?>
+<!-- Example row of columns -->
+<div class="row">
+    <div class="col-lg-4" >
+        <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+        <h2>全体</h2>
+        <p> 
+            フレームワークは CakePHP2.8.6 を使用しています。
+            CakePHPのプロジェクトはComposer を使って作成しています。
+            DBの管理にマイグレーションを使用しています。
+            フロントエンド、バックエンド共に CSS フレームワークに Bootstrap3を使用しています。
+
+        </p>
+
+    </div>
+    <div class="col-lg-4">
+        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+        <h2>フロントエンド</h2>
+        <p>
+            トップにメニューを設け、ページの移動を可能とする。
+            ヘッダー、フッター、レイアウトは各ページ共通とする。
+            トップページのみ個別のレイアウトとする。
+        </p>
+    </div>
+    <div class="col-lg-4">
+        <span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
+        <h2>バックエンド</h2>
+        <p>
+            左サイドにメニューを設ける
+            ユーザー名、パスワードでログイン可能とする。
+            パスワードは暗号化する。
+            ユーザーの一覧表示、詳細表示、追加、変更、削除を可能とする。
+            ユーザーには管理者と一般ユーザーの役割を持たせる。
+            管理者のみがユーザー管理を可能とする。
+        </p>
+    </div>
+</div>
+
+<!-- Site footer -->
+<footer class="footer">
+    <p>&copy; 2016 Yuriko Sugiyama.</p>
+</footer>

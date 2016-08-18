@@ -24,8 +24,8 @@ class UsersController extends AppController {
     }
 
     public function isAuthorized($user) {
-        // action配列の中に['login', 'logout', 'index'が含まれていたら
-        if (in_array($this->action, ['login', 'logout', 'index'])) {
+        // action配列の中に以下のアクションが含まれていたら
+        if (in_array($this->action, ['login', 'logout', 'index','change_password','view'])) {
 //            trueを返す(roleがadminでもuserでもそのactionにアクセスできる)
             return true;
         }
@@ -95,11 +95,21 @@ class UsersController extends AppController {
      * @return void
      */
     public function edit($id = null) {
+        
+        //パスワードを入力する項目において､not Blankのバリデーションをこのアクションでは無効にする
+        //(パスワードがブランクでもフォームが送信できるように)
         $this->User->validator()->remove('password', 'notBlank');
 
         //渡された$idが存在したら$idからデータを見つけてさらってきます
         $user = $this->User->findById($id);
-
+        
+        //その場合､DBから拾ってきたパスワードは表示しないようにしとく(ハッシュ化→ハッシュ化されてしまう
+        if(isset($user['User']['password'])){
+            unset($user['User']['password']);
+        }
+  
+    //管理者が新しいパスワードを入力する場合はここで入力
+        
         //データが$userではなかったら
         if (!$user) {
             //'Invalid user 'の例外を投げます
@@ -110,9 +120,13 @@ class UsersController extends AppController {
             //$idをidに代入します
             $this->User->id = $id;
             
-            //もしパスワードが殻だったら
+            //両端のブランクをトリミングしてからの連続入力された場合それを防ぐ
+            trim($this->request->data['User']['password']);
+            
+            //もしフォームから送信されてきたパスワードが空だったら
             if($this->request->data['User']['password'] == ''){
                
+                //連想配列のkey['password']ごと破棄する
                     unset($this->request->data['User']['password']);
                 }
              
@@ -122,7 +136,7 @@ class UsersController extends AppController {
                 
                 
                 //Flashコンポーネントを使ってメッセージを表示します
-                $this->Flash->success(__('投稿は保存されました'));
+                $this->Flash->success('ユーザは保存されました');
 
                 //Authコンポーネントのログインセッション情報をリフレッシュ
                 $user = $this->User->find('first', [
@@ -133,7 +147,7 @@ class UsersController extends AppController {
 
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Flash->danger('投稿を更新できませんでした');
+            $this->Flash->danger('ユーザを更新できませんでした');
         }
         //$this->request->data が空っぽだったら、取得していたポストレコードを そのままセットしておきます
         if (!$this->request->data) {
