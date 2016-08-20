@@ -1,4 +1,6 @@
-
+<?php
+$this->assign('title','LoginBase アクセス');
+?>
 <!-- Jumbotron -->
 <?php
 $this->start('topheader');
