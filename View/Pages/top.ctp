@@ -4,13 +4,13 @@
 <?php
 $this->start('topheader');
 ?>
-<div class="jumbotron">
- <div class="container">
-    <h1>Loginbase Top</h1>
-    <p class="lead">ログイン機能を実装したwebサイトの基盤となるものです</p>
-
- <!-- <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p> -->
-</div>
+<div class="topimage">
+    <div class="container">
+        <div class="squere">
+            <h1>Loginbase Top</h1>
+            <p class="lead">ログイン機能を実装したwebサイトの基盤となるものです</p>
+        </div>
+    </div>
 </div>
 
 <?php

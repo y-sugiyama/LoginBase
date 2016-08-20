@@ -27,14 +27,14 @@
             <ul class="nav navbar-nav navbar-right">
                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo 'こんにちは'.$login_username. 'さん'; ?><span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo 'こんにちは'.$login_user['username']. 'さん'; ?><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><?php echo $this->Html->link('パスワード変更', array('controller'=>'users','action' => 'change_password')); ?></li>
                        
                         <li><?php echo $this->Html->link('ユーザ情報変更', array(
                             'controller'=>'users',
                             'action' => 'edit', 
-                            $login_user,
+                            $login_user['id'],
                             )); ?></li>
                                                           
                     

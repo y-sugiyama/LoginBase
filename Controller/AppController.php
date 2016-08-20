@@ -56,9 +56,9 @@ class AppController extends Controller {
         //このアクションではadmin.ctpのレイアウトを使います
         $this->layout = 'admin';
         //ログインしているユーザのIDを変数login_userに代入します
-        $this->set('login_user', $this->Auth->user('id'));
+        $this->set('login_user', $this->Auth->user());
         //ログインしているユーザのユーザ名を変数login_usernameに代入します
-        $this->set('login_username', $this->Auth->user('username'));
+//        $this->set('login_username', $this->Auth->user('username'));
     }
 
 }

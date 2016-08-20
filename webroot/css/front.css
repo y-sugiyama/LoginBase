@@ -10,25 +10,39 @@ and open the template in the editor.
 
 /*top.ctp*/
 
-.jumbotron {
-      background: url("img/shop_image.jpg");
+.topimage {
+    /*webroot/css配下のどこか､という記述になる*/
+      background: url("/img/hukei.jpg");
       background-position: center center;
-      background-size: cover;
+      /*画像を画面に合わせて最小サイズで表示*/
+      background-size: contain;
+      height: 700px;
       color: #fff;
+      /*親要素*/
+      position: relative;
+    }
+    
+    .squere{
+        background-color: red;
+        /*透過性*/
+        opacity: 0.8;
+        padding: 15px 15px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1195px;
+        height:150px;
+        /*右寄せする要素を、親要素を基準left:0の絶対位置に配置する。*/
+        position: absolute; left: 0
+        
     }
     
 .container {
-      margin-top: 13%;
+      margin: 0 auto;
+    
     }
 
 
-/*.jumbotron{
-        padding-top: 70px;
-    padding-bottom: 70px;
-    height:400px;
-    background-color: #1abc9c;
-    color: #ffffff;
-}*/
+
 
 .col-lg-4 {
      padding: 40px 40px;
@@ -62,16 +76,27 @@ and open the template in the editor.
 
 /*p1.ctp*/
 
-.media-right{
+.photo_right{
   
-    float:right;
+    float:left;
    
 }
 
-.jumbotron p1{
+.media-object1{
+     margin: 50px 50px 50px 50px;
+}
+
+.jumbotronp1{
     padding-top: 70px;
     padding-bottom: 70px;
-    height:300px;
+    height:400px;
     background-color: #1abc9c;
     color: #ffffff;
 }
+
+.typography{
+    padding: 10px 10px 70px 70px;
+}
+
+/*p2.ctp*/
+

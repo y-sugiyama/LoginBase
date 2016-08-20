@@ -6,21 +6,24 @@
 <div class="form-group <?php if($this->Form->isFieldError('password_current')) { echo 'has-error'; } ?>">
     <?php echo $this->Form->input('password_current',[
         'label' => '現在のパスワード',
-        'type' => 'password'
+        'type' => 'password',
+        'class' => 'form-control'
     ]); ?>
 </div>
 
 <div class="form-group <?php if($this->Form->isFieldError('password')) { echo 'has-error'; } ?>">
     <?php echo $this->Form->input('password',[
         'label' => '新パスワード',
-        'type' => 'password'
+        'type' => 'password',
+        'class' => 'form-control'
     ]); ?>
 </div>
 
 <div class="form-group <?php if($this->Form->isFieldError('password_confirm')) { echo 'has-error'; } ?>">
     <?php echo $this->Form->input('password_confirm',[
         'label' => 'パスワード（確認）',
-        'type' => 'password'
+        'type' => 'password',
+        'class' => 'form-control',
     ]); ?>
 </div>
 

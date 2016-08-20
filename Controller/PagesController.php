@@ -65,14 +65,18 @@ class PagesController extends AppController {
             //その文字列を代入する  aaa
             $page = $path[0];
         }
-        // bbb
+        // pathの2個めに文字列が入っていたら 例:bbb
         if (!empty($path[1])) {
+            
+            //その文字列を変数subpageに代入
             $subpage = $path[1];
         }
+        //最後尾のpathが存在するなら
         if (!empty($path[$count - 1])) {
             // bbb
             $title_for_layout = Inflector::humanize($path[$count - 1]);
         }
+        //$this->set(['page' => $page, 'subpage' => $subpage, 'title_for_layout' => $title_for_layout]);
         $this->set(compact('page', 'subpage', 'title_for_layout'));
 
         try {
@@ -86,7 +90,10 @@ class PagesController extends AppController {
     }
 
     public function top() {
-        
+        $this->set(['title' => $title]);
+        $title = 'Loginbase Top';
     }
+        
+    
 
 }

@@ -20,12 +20,11 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-      
     }
 
     public function isAuthorized($user) {
         // action配列の中に以下のアクションが含まれていたら
-        if (in_array($this->action, ['login', 'logout', 'index','change_password','view'])) {
+        if (in_array($this->action, ['login', 'logout', 'index', 'change_password', 'view', 'edit'])) {
 //            trueを返す(roleがadminでもuserでもそのactionにアクセスできる)
             return true;
         }
@@ -75,7 +74,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             //空にして
             $this->User->create();
-           
+
             //正しくデータが保存されたら
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success('ユーザが新規追加されました.');
@@ -95,21 +94,20 @@ class UsersController extends AppController {
      * @return void
      */
     public function edit($id = null) {
-        
+
         //パスワードを入力する項目において､not Blankのバリデーションをこのアクションでは無効にする
         //(パスワードがブランクでもフォームが送信できるように)
         $this->User->validator()->remove('password', 'notBlank');
 
         //渡された$idが存在したら$idからデータを見つけてさらってきます
         $user = $this->User->findById($id);
-        
+
         //その場合､DBから拾ってきたパスワードは表示しないようにしとく(ハッシュ化→ハッシュ化されてしまう
-        if(isset($user['User']['password'])){
+        if (isset($user['User']['password'])) {
             unset($user['User']['password']);
         }
-  
-    //管理者が新しいパスワードを入力する場合はここで入力
-        
+
+        //管理者が新しいパスワードを入力する場合はここで入力
         //データが$userではなかったら
         if (!$user) {
             //'Invalid user 'の例外を投げます
@@ -119,22 +117,23 @@ class UsersController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             //$idをidに代入します
             $this->User->id = $id;
-            
-            //両端のブランクをトリミングしてからの連続入力された場合それを防ぐ
-            trim($this->request->data['User']['password']);
-            
+
+            //フォームから入力された値の両端の空白(全角･半角)をトリミングして､空白が連続入力された場合などを防ぐ
+            $trimed_password = trim($this->request->data['User']['password']);
+
+
             //もしフォームから送信されてきたパスワードが空だったら
-            if($this->request->data['User']['password'] == ''){
-               
+            if ($trimed_password == '') {
+
                 //連想配列のkey['password']ごと破棄する
-                    unset($this->request->data['User']['password']);
-                }
-             
-              
+                unset($trimed_password);
+            }
+
+
             //呼びだされたデータが保存されたら
             if ($this->User->save($this->request->data)) {
-                
-                
+
+
                 //Flashコンポーネントを使ってメッセージを表示します
                 $this->Flash->success('ユーザは保存されました');
 
@@ -175,8 +174,8 @@ class UsersController extends AppController {
                 return $this->redirect($this->Auth->redirect());
             } else {
                 //存在しなかったら以下のメッセージを返す
-                
-                
+
+
                 $this->Flash->danger('ユーザネームかパスワードが間違っています');
             }
         }
@@ -224,45 +223,12 @@ class UsersController extends AppController {
                 $this->Flash->success('パスワードを更新しました');
                 //Authコンポーネントで指定したredirectUrlにリダイレクトする
                 return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                //現在ログインしているユーザのidをとってきてフォームにいれる
+                $this->request->data = ['User' => ['id' => $this->Auth->user('id')]];
+                $this->Flash->danger('パスワードは変更されませんでした｡再度変更してください');
             }
-        } else {
-            //現在ログインしているユーザのidをとってきて$this->request->dataにいれる
-            $this->request->data = ['User' => ['id' => $this->Auth->user('id')]];
-            $this->Flash->danger('パスワードは変更されませんでした｡再度変更してください');
         }
     }
 
-//    public function edit_user($id = null) {
-//        var_dump($id);
-//        exit;
-//        //渡された$idが存在しなかったら
-//        if (!$id) {
-//            //'Invalid post'の例外処理を投げます
-//            throw new NotFoundException('Invalid post');
-//        }
-//          //渡された$idが存在したら$idからデータを見つけてさらってきます
-//        $post = $this->User->findById($id);
-//        
-//        //データがpostではなかったら
-//        if (!$post) {
-//            //'Invalid post'の例外処理を投げます
-//            throw new NotFoundException(__('Invalid post'));
-//        }
-//         //データがpostかputだったら
-//        if ($this->request->is(array('post', 'put'))) {
-//            //$idをidに代入します
-//            $this->User->id = $id;
-//            //呼びだされたデータが保存されたら
-//            if ($this->User->save($this->request->data)) {
-//                //Flashコンポーネントを使ってメッセージを表示します
-//                $this->Flash->success(__('投稿は保存されました'));
-//                return $this->redirect(array('action' => 'index'));
-//            }
-//            $this->Flash->error(__('投稿を更新できませんでした'));
-//        }
-//        //$this->request->data が空っぽだったら、取得していたポストレコードを そのままセットしておきます
-//        if (!$this->request->data) {
-//            $this->request->data = $post;
-//        }
-//    }
 }
