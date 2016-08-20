@@ -1,4 +1,6 @@
-
+<?php
+$this->assign('title','Loginbase Top');
+?>
 
 <!-- Jumbotron -->
 <?php

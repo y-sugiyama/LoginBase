@@ -12,7 +12,7 @@ and open the template in the editor.
 
 .topimage {
     /*webroot/css配下のどこか､という記述になる*/
-      background: url("/img/hukei.jpg");
+      background: url("/img/vege.jpg");
       background-position: center center;
       /*画像を画面に合わせて最小サイズで表示*/
       background-size: contain;
@@ -31,18 +31,11 @@ and open the template in the editor.
         margin-right: auto;
         width: 1195px;
         height:150px;
-        /*右寄せする要素を、親要素を基準left:0の絶対位置に配置する。*/
+        /*左寄せする要素を、親要素を基準left:0の絶対位置に配置する。*/
         position: absolute; left: 0
         
     }
     
-.container {
-      margin: 0 auto;
-    
-    }
-
-
-
 
 .col-lg-4 {
      padding: 40px 40px;
@@ -76,27 +69,39 @@ and open the template in the editor.
 
 /*p1.ctp*/
 
-.photo_right{
-  
-    float:left;
-   
+
+
+#pageheader{
+margin-top: -20px;
+padding-left: 0;
+padding-right: 0;
 }
 
-.media-object1{
-     margin: 50px 50px 50px 50px;
-}
-
-.jumbotronp1{
-    padding-top: 70px;
-    padding-bottom: 70px;
-    height:400px;
-    background-color: #1abc9c;
+.topbackground1{
+    padding: 70px 70px 20px 20px  ; 
+    margin: 0 auto;
+    height:350px;
+    background-color: skyblue;
     color: #ffffff;
+/*    position: absolute; left: 0;
+    position: absolute; right: 0;*/
 }
 
-.typography{
-    padding: 10px 10px 70px 70px;
+.media{
+    padding: 20px 20px 20px 10px  ; 
 }
 
+.row{
+padding-top: 5px;    
+}
+
+.col-md-8{
+    
+}
+
+.col-md-4{
+    background-color: lemonchiffon;
+    padding-right:0px;
+}
 /*p2.ctp*/
 

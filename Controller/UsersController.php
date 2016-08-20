@@ -212,8 +212,10 @@ class UsersController extends AppController {
     }
 
     public function change_password() {
-
-
+        //現在ログインしているユーザのidをとってきてフォームにいれる
+                
+         $this->request->data = ['User' => ['id' => $this->Auth->user('id')]];
+         
         //フォームがpostかputで送信されたら
         if ($this->request->is(['post', 'put'])) {
 
@@ -224,8 +226,7 @@ class UsersController extends AppController {
                 //Authコンポーネントで指定したredirectUrlにリダイレクトする
                 return $this->redirect($this->Auth->redirectUrl());
             } else {
-                //現在ログインしているユーザのidをとってきてフォームにいれる
-                $this->request->data = ['User' => ['id' => $this->Auth->user('id')]];
+                
                 $this->Flash->danger('パスワードは変更されませんでした｡再度変更してください');
             }
         }

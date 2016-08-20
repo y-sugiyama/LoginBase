@@ -37,17 +37,18 @@
         <?php echo $this->element('navbar_front'); ?>
 
 <!--        表示領域の幅全体に表示する-->
-        <div class = "container-fluid">
+        <div id = "pageheader" class = "container-fluid ">
+            
         <?php echo $this->fetch('topheader') ; ?>
         </div>
         
-        <div id="container" class="container">
-            <div id="content">
+        <div class="container">
+            
 		<?php echo $this->Session->flash(); ?>
                 
 <!--                ctpファイルで個別の設定を読み込む-->
 		<?php echo $this->fetch('content'); ?>
-            </div>
+            
         </div>
 
 	<?php echo $this->element('sql_dump'); ?>
