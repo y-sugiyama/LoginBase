@@ -1,22 +1,79 @@
 # LoginBase
 
-ログインシステムの基盤になるようなコードです.
+## 概要
 
-![作成できるシステムの概要](https://raw.githubusercontent.com/y-sugiyama/LoginBase/master/webroot/img/login_base.png)
+ログインを必要とするサイトの為の雛形サイトです。
+CakePHP 2.8 で作成してます。
 
+![概要](https://raw.githubusercontent.com/y-sugiyama/LoginBase/master/webroot/img/login_base.png)
 
+## 要件
 
-##必要条件
+- PHP 5.6 以上
+- MySQL 5 以上
 
+## インストール方法
 
-* CakePHP 2.8.6 を使用しています
-* PHP5.6以上を使用してください
-* Plugin"cakedc/migrations": "~2.4.0"を使用しているため､MySQLの使用が必要です
-
-##インストール方法
-
-* Composerを使ってインストールします｡場所は､composer.jsonがあるCakePHPプロジェクトのルートディレクトリです｡
-以下からgit cloneしてください｡
 ```
-https://github.com/y-sugiyama/LoginBase.git
+$ git clone https://github.com/y-sugiyama/LoginBase.git
+$ cd LoginBase
+$ composer install
+```
+
+## データベースのセットアップ
+
+※事前に MySQL 内にデータベースを作成しておいてください。
+
+database.php ファイルを作成
+
+```
+$ cp Config/database.php.default Config/database.php
+```
+
+database.php ファイルを編集
+
+```
+<?php
+// Config/database.php
+
+class DATABASE_CONFIG {
+
+	public $default = array(
+		'datasource'  => 'Database/Mysql',
+		'persistent'  => false,
+		'host'        => 'YOURE_HOSTNAME',
+		'login'       => 'YOURE_USERID',
+		'password'    => 'YOURE_PASSWORD',
+		'database'    => 'YOURE_DATABASE',
+		'prefix'      => '',
+		'encoding'    => 'utf8',
+	);
+
+	public $test = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host'        => 'YOURE_HOSTNAME',
+		'login'       => 'YOURE_USERID',
+		'password'    => 'YOURE_PASSWORD',
+		'database'    => 'YOURE_DATABASE',
+		'prefix'     => '',
+		'encoding' => 'utf8',
+	);
+}
+```
+
+データベースのテーブルを作成（マイグレーションの実行）
+```
+$ Console/cake Migrations.migration run all
+```
+
+## アプリケーションの起動
+
+※ 事前にデータベースを起動しておいてください。
+
+```
+$ Console/cake server -p 8000
+...
+...
+built-in server is running in http://localhost:8000/
 ```
