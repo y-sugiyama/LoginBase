@@ -1,46 +1,63 @@
+
+
 <div class="users index">
-	<h2><?php echo __('Users'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<thead>
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('username'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php foreach ($users as $user): ?>
-	<tr>
-		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $user['User']['id']))); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</tbody>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-		'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+
+    <div class="container">
+
+        <!-- content -->
+        <div class="row" style="padding:5px 0 0 0">
+            <!-- left -->
+            <div class="col-md-3">   
+
+                <?php echo $this->element('menu_admin'); ?>
+
+            </div>
+
+            <!-- center -->
+            <div class="col-md-9" style="background-color:white">
+                <h2><?php echo 'ユーザ一覧'; ?></h2>
+
+                <?php if ($login_user['role'] === 'admin') : ?>
+                    <p><button class="btn btn-default" role="button"><?php echo $this->Html->link('新規追加', array('controller' => 'users', 'action' => 'add')); ?></button></p>
+                <?php endif; ?>
+
+                <?php echo $this->fetch('content'); ?>
+                <table class="table table-striped">
+                    <tr>
+                        <th>ユーザ名</th>
+                        <th>権限</th>
+                        <th>アクション</th>
+                    </tr>
+                    <?php foreach ($users as $user): ?>
+
+                        <tr>
+
+                            <td><?php echo $this->Html->link(h($user['User']['username']), array('action' => 'view', $user['User']['id'])); ?></td>
+                            <td><?php echo h($user['User']['role']); ?>&nbsp;</td>
+                            <td class="actions">
+                                <?php if ($login_user['role'] === 'admin') : ?>
+                                    <button type="button" class="btn btn-default"><?php echo $this->Html->link('編集', array('action' => 'edit', $user['User']['id'])); ?></button>
+                                    <button type="button" class="btn btn-danger"><?php echo $this->Form->postLink(__('削除'), array('action' => 'delete', $user['User']['id']), array('confirm' => '本当に削除してよろしいですか?', $user['User']['id'])); ?></button>
+                                <?php endif; ?>
+                                    
+                                <?php if ($login_user['role'] === 'user') : ?>
+                                <?php echo '実行できるアクションはありません'; ?>
+                                <?php endif;?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- ビューで表示したいものはここに配置します。 -->
+
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-	</ul>
-</div>
+
+
+
+

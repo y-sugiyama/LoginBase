@@ -1,20 +1,72 @@
-<div class="users form">
-<?php echo $this->Form->create('User'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('User.id')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-	</ul>
+<div class="users index">
+
+    <div class="container">
+
+        <!-- content -->
+        <div class="row" style="padding:5px 0 0 0">
+            <!-- left -->
+            <div class="col-md-3">   
+
+                <?php echo $this->element('menu_admin'); ?>
+
+            </div>
+
+            <!-- center -->
+            <div class="col-md-9" style="background-color:white">
+
+
+
+                <h2 class="form-signin-heading"><?php echo '編集画面'; ?></h2>
+
+                <?php echo $this->Form->create('User', ['novalidate' => 'novalidate']) ?>
+
+                <div class="form-group <?php
+                if ($this->Form->isFieldError('username')) {
+                    echo 'has-error';
+                }
+                ?>">
+                         <?php
+                         echo $this->Form->input('username', [
+                             'class' => 'form-control',
+                             'placeholder' => 'Username'
+                         ]);
+                         ?>
+                </div>
+
+                <?php if ($login_user['role'] === 'admin') : ?>
+                    <div class="form-group <?php
+                             if ($this->Form->isFieldError('password')) {
+                                 echo 'has-error';
+                             }
+                             ?>">
+                             <?php
+                             echo $this->Form->input('password', [
+                                 'class' => 'form-control',
+                                 'placeholder' => 'Password'
+                             ]);
+                             ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if ($login_user['role'] === 'admin') : ?>
+                    <div class="form-group">
+                        <?php
+                        echo $this->Form->input('role', array(
+                            'type' => 'select',
+                            'options' => [
+                                'admin' => '管理者',
+                                'user' => 'ユーザ'
+                            ],
+                            'class' => 'form-control',
+                        ));
+                        ?>
+                    </div>
+<?php endif; ?>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit"><?php echo '更新'; ?></button>
+<?php echo $this->Form->end(); ?> 
+
+            </div>
+        </div>
+    </div>
 </div>

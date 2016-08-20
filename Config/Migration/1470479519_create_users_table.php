@@ -35,6 +35,11 @@ class CreateUsersTable extends CakeMigration {
 						'null'    => false,
 						'default' => null
 					),
+                                        'role' => array(
+						'type'    => 'string',
+						'null'    => false,
+						'default' => null
+					),
 				),
 			),
 		),
