@@ -2,7 +2,7 @@
 
 ログインシステムの基盤になるようなコードです.
 
-![作成できるシステムの概要](画像のURL)
+![作成できるシステムの概要](https://raw.githubusercontent.com/y-sugiyama/LoginBase/master/webroot/img/login_base.png)
 
 ***
 
