@@ -25,3 +25,8 @@ composer require cakephp/debug_kit" "2.2.*"
 ```php:bootstrap.php
 CakePlugin::loadAll();
 ```
+
+* 以下からgit cloneしてください｡
+```
+https://github.com/y-sugiyama/LoginBase.git
+```
