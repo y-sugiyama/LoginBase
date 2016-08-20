@@ -2,6 +2,8 @@
 
 ログインシステムの基盤になるようなコードです.
 
+![作成できるシステムの概要](画像のURL)
+
 ***
 
 ##必要条件
@@ -13,20 +15,8 @@
 
 ##インストール方法
 ***
-* Composerを使ってプラグインをインストールします｡場所は､composer.jsonがあるCakePHPプロジェクトのルートディレクトリです｡
-
-```:ターミナル
-composer require cakedc/migrations "~2.4.0"
-```
-```:ターミナル
-composer require cakephp/debug_kit" "2.2.*"
-```
-* プラグインをロードします
-```php:bootstrap.php
-CakePlugin::loadAll();
-```
-
-* 以下からgit cloneしてください｡
+* Composerを使ってインストールします｡場所は､composer.jsonがあるCakePHPプロジェクトのルートディレクトリです｡
+以下からgit cloneしてください｡
 ```
 https://github.com/y-sugiyama/LoginBase.git
 ```
