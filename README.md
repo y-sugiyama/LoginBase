@@ -3,7 +3,7 @@
 ## 概要
 
 ログインを必要とするサイトの為の雛形サイトです。
-CakePHP 2.8 で作成してます。
+CakePHP 2.8 で作成しています。
 
 ![概要](https://raw.githubusercontent.com/y-sugiyama/LoginBase/master/webroot/img/login_base.png)
 
