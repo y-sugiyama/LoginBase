@@ -4,6 +4,7 @@
 
 ログインを必要とするサイトの為の雛形サイトです。
 CakePHP 2.8 で作成しています。
+[★デモページはこちら★](http://loginbase.sustainable-future.xyz/)
 
 ![概要](https://raw.githubusercontent.com/y-sugiyama/LoginBase/master/webroot/img/login_base.png)
 
