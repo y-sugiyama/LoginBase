@@ -2,9 +2,7 @@
 
 <?php echo $this->Form->create('User', ['novalidate' => 'novalidate']) ?>
 
-<div class="form-group <?php if ($this->Form->isFieldError('username')) {
-        echo 'has-error';
-    } ?>">
+
     <?php
     echo $this->Form->input('username', [
         'class' => 'form-control',
